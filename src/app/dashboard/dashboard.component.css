@@ -1,0 +1,31 @@
+.page-frame {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 3px solid #000;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.top-bar {
+  width: 100%;
+  background: #0aa56d;
+  color: #fff;
+  text-align: center;
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+.center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  font-size: 14px;
+  color: #333;
+}

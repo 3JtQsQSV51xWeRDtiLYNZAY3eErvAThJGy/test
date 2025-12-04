@@ -1,0 +1,29 @@
+<div class="page-frame">
+  <div class="top-bar">IT 02-1</div>
+
+  <div class="login-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label>User</label>
+        <input type="text" formControlName="username" />
+        <div class="error" *ngIf="form.get('username')?.touched && form.get('username')?.invalid">กรุณากรอกชื่อผู้ใช้</div>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input type="password" formControlName="password" />
+        <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">กรุณากรอกรหัสผ่าน</div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn" [disabled]="isSubmitting">{{ isSubmitting ? 'กำลังเข้าสู่ระบบ...' : 'ลงชื่อเข้าใช้งาน' }}</button>
+      </div>
+
+      <div *ngIf="serverError" class="server-error">{{ serverError }}</div>
+
+      <div class="register">
+        <a routerLink="/register">สมัครสมาชิก</a>
+      </div>
+    </form>
+  </div>
+</div>

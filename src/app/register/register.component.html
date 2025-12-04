@@ -1,0 +1,31 @@
+<div class="page-frame">
+  <div class="top-bar">IT 02-2</div>
+
+  <div class="register-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="field">
+        <label>User</label>
+        <input type="text" formControlName="username" />
+        <div class="error" *ngIf="form.get('username')?.touched && form.get('username')?.invalid">กรุณากรอกชื่อผู้ใช้</div>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input type="password" formControlName="password" />
+        <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">กรุณากรอกรหัสผ่าน</div>
+        <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('minlength')">รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร</div>
+      </div>
+
+      <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword" />
+        <div class="error" *ngIf="form.touched && form.errors?.['passwordMismatch']">รหัสผ่านไม่ตรงกัน</div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn" [disabled]="isSubmitting">{{ isSubmitting ? 'กำลังสมัคร...' : 'สมัครสมาชิก' }}</button>
+      </div>
+      <div *ngIf="serverError" class="server-error" style="color:#c00;margin-top:8px">{{ serverError }}</div>
+    </form>
+  </div>
+</div>
